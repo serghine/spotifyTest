@@ -1,0 +1,32 @@
+
+<ion-content padding>
+  <!-- header -->
+  <div class="header">
+<h1>Spotify</h1>
+  </div>
+    <div class="borderGrenn">
+      <div class="imagbox">
+        <img src="../../assets/img/OIP.jpg" alt="">
+      </div>
+    </div>
+    <!-- bare de recherche -->
+    <div>
+      <ion-searchbar (ionInput)="chercherArtist($event)"></ion-searchbar>
+    </div>
+    <!-- body -->
+    <div class="content">
+    <div *ngIf="items?.length>0" >
+    <ion-list *ngFor="let i of items">
+      <ion-item>
+        <div class="info">
+          <h1>Artiste: {{i.name}}</h1>
+          <div class="homeArt">
+            <p class="span1"><ion-icon name="heart-outline" class="heart" ></ion-icon>Popularity: {{i.popularity}}</p>
+            <p><ion-icon name="musical-notes-outline"(click)="chercherAlbums(i.id,i.name)" class="musique"></ion-icon>Albums</p>
+          </div>
+        </div>
+      </ion-item>
+    </ion-list> 
+    </div>
+  </div>
+</ion-content>
