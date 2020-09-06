@@ -1,0 +1,59 @@
+<!-- header -->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button   color="dark" ></ion-back-button>
+    </ion-buttons>
+    <div class="header">
+      Spotify
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<!-- body -->
+<ion-content >
+        <div *ngIf="traks?.length > 0">
+          <ion-list *ngFor="let trak of traks">
+          <ion-item (click)='play(trak)'>
+            <div >
+              <div >
+                <ion-label [color]="trak==track?'success':'dark'" class="track" >
+                   <ion-icon name="play-circle-outline" clear-items-end class="button" ></ion-icon>
+                   {{trak.name}}
+                </ion-label>
+                
+              </div>
+            </div>
+          </ion-item>
+       </ion-list>
+       </div>
+</ion-content>
+
+<!-- footer -->
+
+<ion-footer *ngIf="track">
+  <ion-toolbar>
+    <ion-row >
+      <ion-col size="12" class="ion-text-center">
+         {{track.name}}
+      </ion-col>
+      <ion-col size="12">
+        <ion-range #range [(ngModel)]="progresse" max="100" color="success" (touched)="seek()" (mouseup)="seek()"></ion-range>
+      </ion-col>
+      <ion-col size="12" size="12" class="ion-text-center">
+    <ion-button fill="clear" (click)="prev()" color="light">
+     <span class="jok"><ion-icon name="arrow-undo-outline"></ion-icon></span>
+    </ion-button>
+    <ion-button fill="clear" (click)="stopPlay(false)"  *ngIf="!ispalaying" color="light">
+      <span class="jok"><ion-icon name="play-circle-outline"></ion-icon></span>
+      </ion-button>
+      <ion-button fill="clear" (click)="stopPlay(true)" *ngIf="ispalaying" color="light">
+        <span class="jok"><ion-icon name="pause-circle-outline"></ion-icon></span>
+        </ion-button>
+      <ion-button fill="clear" (click)="next()"  color="light">
+        <span class="jok"><ion-icon name="arrow-redo-outline"></ion-icon></span>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>
