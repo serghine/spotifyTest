@@ -1,0 +1,23 @@
+<!-- header -->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button   color="dark" ></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{name}}:Albums</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- body -->
+<ion-content >
+<ion-card *ngFor="let album of albums" (click)="detailAlbum(album.id)">
+  <ion-card-header>
+    <span class="button"><ion-icon name="play-circle-outline"></ion-icon></span>
+    <ion-card-subtitle>Type: {{album.type}}</ion-card-subtitle>
+    <ion-card-title>album: {{album.name}}</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <img src="{{album.images[0].url}}" alt="">
+  </ion-card-content>
+</ion-card>
+</ion-content>
